@@ -9,7 +9,7 @@ KERNEL_ROOTDIR=$(pwd)/$device_codename # IMPORTANT ! Fill with your kernel sourc
 DEVICE_CODENAME=$device_codename # IMPORTANT ! Declare your device codename
 DEVICE_DEFCONFIG=$kernel_defconfig # IMPORTANT ! Declare your kernel source defconfig file here.
 CLANG_ROOTDIR=$(pwd)/clang # IMPORTANT! Put your clang directory here.
-export KBUILD_BUILD_USER=RUBY # Change with your own name or else.
+export KBUILD_BUILD_USER=XBIZART # Change with your own name or else.
 export KBUILD_BUILD_HOST=XZI-TEAM # Change with your own hostname.
 IMAGE=$(pwd)/$DEVICE_CODENAME/out/arch/arm64/boot/Image.gz-dtb
 DATE=$(date +"%F-%S")
@@ -27,7 +27,6 @@ echo BUILDER NAME = ${KBUILD_BUILD_USER}
 echo BUILDER HOSTNAME = ${KBUILD_BUILD_HOST}
 echo DEVICE_DEFCONFIG = ${DEVICE_DEFCONFIG}
 echo CLANG_VERSION = $(${CLANG_ROOTDIR}/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')
-echo LLD_VERSION = "$("$CLANG_ROOTDIR"/bin/ld.lld --version | head -n 1)"
 echo CLANG_ROOTDIR = ${CLANG_ROOTDIR}
 echo KERNEL_ROOTDIR = ${KERNEL_ROOTDIR}
 echo ================================================
@@ -47,12 +46,6 @@ function compile() {
   make -j$(nproc) O=out ARCH=arm64 ${DEVICE_DEFCONFIG}
   make -j$(nproc) ARCH=arm64 O=out \
 	CC=${CLANG_ROOTDIR}/bin/clang \
-    AS=${CLANG_ROOTDIR}/bin/llvm-as \
-    NM=${CLANG_ROOTDIR}/bin/llvm-nm \
-    OBJCOPY=${CLANG_ROOTDIR}/bin/llvm-objcopy \
-    OBJDUMP=${CLANG_ROOTDIR}/bin/llvm-objdump \
-    STRIP=${CLANG_ROOTDIR}/bin/llvm-strip \
-    LD=${CLANG_ROOTDIR}/bin/ld.lld \
     CROSS_COMPILE=${CLANG_ROOTDIR}/bin/aarch64-linux-gnu- \
     CROSS_COMPILE_ARM32=${CLANG_ROOTDIR}/bin/arm-linux-gnueabi-
 
