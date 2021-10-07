@@ -1,5 +1,5 @@
 # xCircleCiScript
-## Needed Secret Variable in cloud.drone.io
+## Needed Secret Variable in circle.ci
 * KERNEL_NAME | Your kernel name
 * KERNEL_SOURCE | Your kernel link source
 * KERNEL_BRANCH  | Your needed kernel branch if needed with -b. eg -b eleven_eas
