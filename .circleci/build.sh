@@ -8,7 +8,7 @@ KERNEL_NAME=Violet-Roselia # IMPORTANT ! Declare your kernel name
 KERNEL_ROOTDIR=merlin # IMPORTANT ! Fill with your kernel source root directory.
 DEVICE_CODENAME=merlin # IMPORTANT ! Declare your device codename
 DEVICE_DEFCONFIG=merlin_defconfig # IMPORTANT ! Declare your kernel source defconfig file here.
-CLANG_ROOTDIR=clang # IMPORTANT! Put your clang directory here.
+CLANG_ROOTDIR=bin/clang # IMPORTANT! Put your clang directory here.
 export KBUILD_BUILD_USER=XBIZART # Change with your own name or else.
 export KBUILD_BUILD_HOST=XZI-TEAM # Change with your own hostname.
 IMAGE=$(pwd)/$DEVICE_CODENAME/out/arch/arm64/boot/Image.gz-dtb
@@ -26,13 +26,13 @@ echo ================================================
 echo BUILDER NAME = ${KBUILD_BUILD_USER}
 echo BUILDER HOSTNAME = ${KBUILD_BUILD_HOST}
 echo DEVICE_DEFCONFIG = ${DEVICE_DEFCONFIG}
-echo CLANG_VERSION = $(${CLANG_ROOTDIR}/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')
+echo CLANG_VERSION = $(${CLANG_ROOTDIR}/bin/clang strombreaker-clang
 echo CLANG_ROOTDIR = ${CLANG_ROOTDIR}
 echo KERNEL_ROOTDIR = ${KERNEL_ROOTDIR}
 echo ================================================
 }
 
-# Compiler
+
 function compile() {
 
    # Your Telegram Group
