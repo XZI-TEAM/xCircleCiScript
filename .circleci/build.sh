@@ -5,10 +5,10 @@ git clone --depth=1 https://github.com/stormbreaker-project/stormbreaker-clang c
 
 # Main
 KERNEL_NAME=Violet-Roselia # IMPORTANT ! Declare your kernel name
-KERNEL_ROOTDIR=$(pwd)/merlin # IMPORTANT ! Fill with your kernel source root directory.
-DEVICE_CODENAME=$merlin # IMPORTANT ! Declare your device codename
-DEVICE_DEFCONFIG=$merlin_defconfig # IMPORTANT ! Declare your kernel source defconfig file here.
-CLANG_ROOTDIR=$(pwd)/clang # IMPORTANT! Put your clang directory here.
+KERNEL_ROOTDIR=merlin # IMPORTANT ! Fill with your kernel source root directory.
+DEVICE_CODENAME=merlin # IMPORTANT ! Declare your device codename
+DEVICE_DEFCONFIG=merlin_defconfig # IMPORTANT ! Declare your kernel source defconfig file here.
+CLANG_ROOTDIR=clang # IMPORTANT! Put your clang directory here.
 export KBUILD_BUILD_USER=XBIZART # Change with your own name or else.
 export KBUILD_BUILD_HOST=XZI-TEAM # Change with your own hostname.
 IMAGE=$(pwd)/$DEVICE_CODENAME/out/arch/arm64/boot/Image.gz-dtb
