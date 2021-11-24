@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 echo "Downloading few Dependecies . . ."
-git clone --depth=1 $kernel_source $device_codename
-git clone --depth=1 https://github.com/XBIZART/proton-clang clang
+git clone --depth=1 https://github.com/XZI-TEAM/Violet-Kernel merlin
+git clone --depth=1 https://github.com/stormbreaker-project/stormbreaker-clang clang
 
 # Main
-KERNEL_NAME=$kernel_name # IMPORTANT ! Declare your kernel name
-KERNEL_ROOTDIR=$(pwd)/$device_codename # IMPORTANT ! Fill with your kernel source root directory.
-DEVICE_CODENAME=$device_codename # IMPORTANT ! Declare your device codename
-DEVICE_DEFCONFIG=$kernel_defconfig # IMPORTANT ! Declare your kernel source defconfig file here.
+KERNEL_NAME=Violet-Roselia # IMPORTANT ! Declare your kernel name
+KERNEL_ROOTDIR=$(pwd)/merlin # IMPORTANT ! Fill with your kernel source root directory.
+DEVICE_CODENAME=$merlin # IMPORTANT ! Declare your device codename
+DEVICE_DEFCONFIG=$merlin_defconfig # IMPORTANT ! Declare your kernel source defconfig file here.
 CLANG_ROOTDIR=$(pwd)/clang # IMPORTANT! Put your clang directory here.
 export KBUILD_BUILD_USER=XBIZART # Change with your own name or else.
 export KBUILD_BUILD_HOST=XZI-TEAM # Change with your own hostname.
@@ -36,8 +36,8 @@ echo ================================================
 function compile() {
 
    # Your Telegram Group
-   curl -s -X POST "https://api.telegram.org/bot$token/sendMessage" \
-        -d chat_id="$chat_id" \
+   curl -s -X POST "https://api.telegram.org/1842769327:AAG6uFKIdqbl71LKSroDi9M14AucCNjIphI/sendMessage" \
+        -d chat_id="-1001760033609" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
         -d text="<b>xKernelCompiler</b>%0ABUILDER NAME : <code>${KBUILD_BUILD_USER}</code>%0ABUILDER HOST : <code>${KBUILD_BUILD_HOST}</code>%0ADEVICE DEFCONFIG : <code>${DEVICE_DEFCONFIG}</code>%0ACLANG VERSION : <code>$(${CLANG_ROOTDIR}/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')</code>%0ACLANG ROOTDIR : <code>${CLANG_ROOTDIR}</code>%0AKERNEL ROOTDIR : <code>${KERNEL_ROOTDIR}</code>"
